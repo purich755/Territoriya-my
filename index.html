@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Территория МЫ — лагерь, где становятся личностью</title>
+<meta name="description" content="Республиканский интеллектуально-психологический лагерь «Территория МЫ», Казань. Смены с 7 лет: квесты, психология, сцена, орлятский круг. Демо-версия сайта.">
+<meta name="theme-color" content="#10231C">
+<meta property="og:title" content="Территория МЫ — лагерь, где становятся личностью">
+<meta property="og:description" content="Карта территории, которой нет на картах. Демо-версия сайта.">
+<meta property="og:image" content="assets/img/hero-stage.webp">
+<link rel="icon" href="assets/logo/logo-terra.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dela+Gothic+One&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // флаги до первой отрисовки: js, повторный визит (без прелоадера), сохранённая аудитория
+  (function () {
+    var d = document.documentElement, b = 'js';
+    try { if (sessionStorage.getItem('tm-intro')) b += ' no-intro'; } catch (e) { b += ' no-intro'; }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) b += ' no-intro';
+    if (b.indexOf('no-intro') < 0) b += ' intro';
+    d.setAttribute('data-boot', b);
+    try { var a = localStorage.getItem('tm-aud'); if (a === 'kid') d.setAttribute('data-aud', 'kid'); } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- 00 · прелоадер: «я» стягиваются в «МЫ» -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-field"></div>
+  <div class="intro-word"><span>М</span><span>Ы</span></div>
+  <svg class="intro-rings" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid slice"></svg>
+</div>
+
+<!-- шапка -->
+<header class="hdr" id="hdr">
+  <a class="hdr-logo" href="#hero" data-cursor="наверх">
+    <img src="assets/logo/logo-terra.webp" srcset="assets/logo/logo-terra.webp 1x, assets/logo/logo-terra@2x.webp 2x" width="210" height="280" alt="">
+    <span class="hdr-name">Территория<b>МЫ</b></span>
+  </a>
+  <div class="aud" role="group" aria-label="Для кого показывать сайт">
+    <button type="button" class="aud-btn" data-set-aud="parent" aria-pressed="true">Я&nbsp;родитель</button>
+    <button type="button" class="aud-btn" data-set-aud="kid" aria-pressed="false">Я&nbsp;участник</button>
+    <span class="aud-thumb" aria-hidden="true"></span>
+  </div>
+  <a class="btn btn--flame btn--sm hdr-cta" href="https://t.me/territory_us" target="_blank" rel="noopener" data-cursor="написать">
+    <span>Написать в&nbsp;Telegram</span>
+  </a>
+</header>
+
+<main id="main">
+
+<!-- 01 · ГЕРОЙ «КАРТА» -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <canvas class="hero-topo" aria-hidden="true"></canvas>
+  <div class="hero-frame" aria-hidden="true">
+    <span class="tick tick--t">55.78°N</span><span class="tick tick--r">49.12°E</span>
+    <span class="tick tick--b">масштаб: один отряд</span><span class="tick tick--l">лист 01 / 12</span>
+  </div>
+
+  <div class="hero-pins" aria-hidden="false">
+    <figure class="pin pin--a" data-depth="0.6">
+      <img src="assets/img/hero-stage.webp" width="760" height="520" alt="Отряды на большой сцене на фоне экрана с надписью «Территория МЫ»" fetchpriority="high">
+      <figcaption>55.71°N · сцена</figcaption>
+    </figure>
+    <figure class="pin pin--b" data-depth="1.1">
+      <img src="assets/img/hero-laugh.webp" width="560" height="700" alt="Ребята смеются на вечернем мероприятии">
+      <figcaption>вечёрка, после финала</figcaption>
+    </figure>
+    <figure class="pin pin--c" data-depth="0.8">
+      <img src="assets/img/hero-light.webp" width="560" height="560" alt="Участница в оранжевом световом кольце на мастер-классе по световой живописи">
+      <figcaption>рисуем светом</figcaption>
+    </figure>
+    <figure class="pin pin--d" data-depth="1.4">
+      <img src="assets/img/hero-dance.webp" width="640" height="480" alt="Весь лагерь танцует на улице">
+      <figcaption>отряд в сборе</figcaption>
+    </figure>
+  </div>
+
+  <div class="hero-in">
+    <p class="coord hero-coord"><span>55.78°N · 01</span> Республиканский интеллектуально-психологический лагерь</p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="ht-line ht-terr">Территория</span>
+      <span class="ht-line ht-my">МЫ</span>
+    </h1>
+    <div class="hero-sub">
+      <p class="hero-lead"><span data-aud-text data-parent="Место, откуда ребёнок вернётся увереннее." data-kid="Место, где тебя наконец услышат.">Место, откуда ребёнок вернётся увереннее.</span></p>
+      <p class="hero-desc">Республиканский интеллектуально-психологический лагерь. Лагерь, где становятся личностью.</p>
+      <div class="hero-cta">
+        <a class="btn btn--flame magnet" href="https://t.me/territory_us" target="_blank" rel="noopener" data-cursor="написать"><span>Написать в&nbsp;Telegram</span></a>
+        <a class="btn btn--line" href="#atlas" data-cursor="смотреть"><span>Как устроена смена&nbsp;↓</span></a>
+      </div>
+    </div>
+    <p class="note note--hero" aria-hidden="true">вы находитесь здесь ↘</p>
+  </div>
+
+  <div class="legend-run" aria-label="Легенда карты">
+    <div class="legend-track">
+      <span>квесты · психология · сцена · орлятский круг · English camp · игры · друзья на годы ·&nbsp;</span>
+      <span aria-hidden="true">квесты · психология · сцена · орлятский круг · English camp · игры · друзья на годы ·&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · МАНИФЕСТ «ИЗ МНОГИХ Я» -->
+<section class="manifest" id="manifest" aria-labelledby="manifest-title">
+  <div class="manifest-pin">
+    <div class="manifest-text">
+      <p class="coord"><span>55.78°N · 02</span> Манифест</p>
+      <h2 class="visually-hidden" id="manifest-title">Из многих я</h2>
+      <p class="manifest-words">Сюда приезжают по&nbsp;одному. Стеснительные, громкие, новенькие, «я&nbsp;тут никого не&nbsp;знаю». А&nbsp;уезжают&nbsp;— <b>МЫ.</b></p>
+      <p class="note note--manifest" aria-hidden="true">никто не остаётся в стороне</p>
+    </div>
+    <div class="manifest-stage" aria-hidden="true">
+      <canvas class="ya-canvas" data-word="МЫ"></canvas>
+      <span class="manifest-count"><b>1</b> → <b>МЫ</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · ЭТА ТЕРРИТОРИЯ ПЕРЕЕЗЖАЛА -->
+<section class="moved tone-paper" id="moved" aria-labelledby="moved-title">
+  <div class="edge" data-edge="ink" aria-hidden="true"></div>
+  <div class="wrap moved-grid">
+    <div class="moved-head">
+      <p class="coord"><span>55.71°N · 03</span> Переезды</p>
+      <h2 class="h2 split" id="moved-title">Эта территория переезжала</h2>
+      <p class="moved-text">За&nbsp;25+ лет мы сменили не&nbsp;одну базу. Территория осталась той&nbsp;же&nbsp;— потому что она не&nbsp;в&nbsp;корпусах. Она в&nbsp;людях.</p>
+    </div>
+
+    <figure class="moved-map">
+      <svg viewBox="0 0 1000 678" role="img" aria-labelledby="map-cap">
+        <title id="map-cap">Схема Татарстана: офис в Казани и база ГК «Регина» в Мамадыше</title>
+        <defs>
+          <clipPath id="rt-clip"><path d="M1.9,501.2L17.9,496.1L22.8,511.1L14.1,515.3L21.6,546.7L25.6,546.1L22.8,537.5L29.3,528.9L49.8,535.7L55.4,525.3L52.4,517.4L63.7,506.7L60.6,502.2L67.3,486.8L82.3,488.5L84.1,498.2L74.8,499.9L81.4,510.2L97.4,510.5L96.2,490.7L119.1,492.1L115.5,484.9L122.3,478.9L121.5,485.9L129.1,489.6L147.1,487.9L140.2,495.2L147.5,504.8L155.1,494.7L173.8,514.4L233.1,514.4L233.1,471.5L254.6,466.6L262.7,473.5L271.1,460.0L284.0,460.1L288.6,455.1L284.1,450.4L291.0,447.6L307.7,460.7L303.8,463.6L324.9,489.7L318.3,498.5L328.5,503.6L325.5,513.5L333.2,521.3L329.8,530.2L355.0,526.5L384.1,536.9L387.7,545.6L420.2,545.5L427.2,560.2L436.2,560.2L441.3,555.2L438.6,550.6L445.7,547.5L453.8,565.6L458.3,563.7L464.5,583.2L461.2,584.4L466.7,589.7L497.3,569.7L499.3,576.9L517.1,574.7L521.6,578.3L520.5,585.1L527.9,585.2L527.7,571.8L534.8,570.1L532.6,561.3L537.9,553.5L536.0,533.4L545.4,535.7L561.9,505.8L570.8,512.3L590.2,501.3L589.2,523.7L607.9,521.9L610.9,507.9L625.1,529.5L667.1,537.0L670.4,552.4L663.6,567.7L686.7,566.3L682.4,582.1L690.5,588.8L693.9,582.1L690.9,573.1L699.8,579.7L708.2,561.9L724.6,558.8L729.6,571.2L738.8,552.3L748.8,556.0L747.0,573.4L758.2,585.9L762.9,579.5L768.2,586.3L777.3,580.8L812.9,594.2L805.6,603.0L823.9,598.0L818.4,591.3L827.7,582.7L841.7,598.7L836.3,604.2L839.7,609.2L824.4,609.8L830.4,615.7L827.1,616.7L812.5,614.3L815.3,625.4L833.5,639.7L828.6,654.8L853.4,642.8L855.9,646.6L851.9,649.3L860.6,649.3L860.6,663.8L872.3,677.7L878.8,663.5L891.0,657.1L880.0,613.3L883.3,606.3L881.3,588.7L874.1,577.4L878.5,571.4L874.9,566.0L880.9,563.2L877.2,558.1L881.6,550.6L880.0,529.6L906.5,502.5L901.7,501.1L910.8,483.8L909.3,467.9L903.6,466.6L912.2,443.8L898.5,450.8L887.4,425.8L859.1,410.1L861.6,402.6L856.6,394.6L843.2,393.0L842.2,378.8L872.6,376.9L876.4,372.2L871.3,369.7L880.5,362.7L907.5,366.6L905.5,354.5L917.4,350.9L918.1,338.3L947.4,331.4L944.0,321.4L959.1,303.5L957.4,287.2L985.6,266.7L1000.0,243.8L996.6,238.0L993.8,244.4L986.8,240.9L978.7,230.4L980.5,224.5L964.2,230.3L971.1,223.2L969.1,217.4L956.4,225.0L953.9,216.5L961.0,207.8L941.9,206.6L947.0,201.0L939.5,202.8L921.3,187.3L897.7,191.6L878.0,207.0L854.0,201.6L849.6,185.5L864.7,185.0L861.8,182.6L865.8,173.0L875.3,171.2L871.8,165.3L885.9,162.9L882.4,153.2L890.5,135.3L900.6,138.0L898.4,114.8L901.7,110.1L889.3,111.1L881.5,100.3L853.7,108.0L864.6,115.3L869.7,127.9L869.2,142.1L874.3,146.9L867.1,153.9L857.2,142.5L847.3,143.6L841.8,129.6L832.3,134.1L834.2,140.7L828.9,137.0L832.4,125.6L826.7,127.1L825.6,119.4L829.4,116.5L825.6,113.2L823.3,114.9L828.5,116.3L822.2,119.4L825.8,126.7L819.7,125.0L819.4,120.3L823.0,118.4L814.5,109.2L815.3,99.3L819.4,104.6L818.4,97.8L811.7,97.9L817.6,88.0L814.0,83.9L820.3,61.2L832.3,55.5L832.1,41.3L840.3,37.9L812.3,33.5L815.0,39.0L810.5,46.4L802.4,42.1L815.3,54.1L814.6,62.0L795.4,74.5L788.1,69.7L770.4,100.7L761.9,97.9L756.4,108.6L782.3,114.0L802.9,129.4L793.9,139.3L802.7,139.7L797.6,149.4L778.8,136.8L785.0,153.8L782.1,168.0L785.1,172.1L742.4,148.8L738.1,154.9L748.4,161.3L743.3,167.5L736.5,160.5L731.4,164.7L711.8,144.9L714.5,160.3L706.7,164.3L712.1,180.2L702.8,182.0L705.6,185.5L699.5,193.5L687.1,194.0L689.0,188.3L682.6,176.6L670.5,172.1L667.3,181.6L656.6,183.0L646.1,198.0L646.2,184.8L636.2,184.1L642.8,181.0L640.6,174.1L635.8,184.2L627.1,176.7L604.2,179.5L607.7,185.4L601.8,180.9L602.3,191.7L592.7,167.4L587.3,162.7L583.4,158.1L592.9,167.3L594.3,158.9L625.3,146.8L625.8,135.4L598.1,137.6L580.5,154.3L565.9,148.4L564.5,138.6L543.0,141.1L544.3,136.5L532.7,130.9L535.1,118.4L517.4,120.5L510.9,109.2L523.1,99.7L514.0,80.4L518.3,76.2L498.0,66.9L510.2,82.5L498.2,91.0L475.0,81.9L483.5,68.0L473.9,70.8L462.1,49.2L468.6,42.5L454.8,31.4L462.4,16.6L450.8,25.1L453.7,16.9L436.4,0.0L435.0,10.9L417.0,6.4L413.7,18.0L401.2,15.7L419.0,21.5L421.1,29.8L403.5,40.9L388.2,61.3L382.2,54.5L390.6,45.4L382.9,44.9L372.6,62.8L357.3,55.6L365.9,43.8L357.7,34.8L331.1,43.4L332.9,54.3L323.4,63.5L314.9,62.8L312.8,56.9L317.7,50.0L310.3,49.6L307.0,78.0L297.7,78.0L297.6,86.7L286.0,81.7L281.8,70.6L273.8,71.6L275.3,80.5L257.3,83.0L254.5,98.1L238.9,105.3L241.1,113.0L253.4,110.5L259.9,117.7L257.3,121.8L247.8,119.2L242.5,134.6L228.4,140.4L225.7,156.9L206.3,154.4L209.3,157.4L205.4,162.9L210.8,167.5L202.4,185.0L166.7,190.9L162.3,203.5L171.8,211.6L163.9,212.2L166.3,224.4L145.5,224.6L147.7,229.3L141.3,232.6L141.0,247.4L126.7,246.9L126.0,258.2L119.5,246.1L120.6,257.0L109.0,262.5L109.4,270.0L119.2,265.8L117.8,273.5L128.2,277.4L122.9,288.9L103.2,291.1L104.8,296.9L94.5,305.2L95.1,312.6L78.2,336.2L63.3,329.3L57.0,336.2L64.6,347.5L60.4,366.6L76.7,360.5L79.6,344.4L88.6,356.6L93.5,354.6L88.2,349.1L89.4,339.7L96.6,339.5L109.2,347.7L109.4,360.6L116.7,362.9L122.9,383.8L116.3,388.1L119.9,396.8L116.5,399.4L111.4,390.3L93.5,397.3L97.6,413.7L100.8,404.2L111.5,410.4L104.1,432.2L74.3,430.7L78.0,458.8L84.0,468.2L76.3,465.8L69.9,443.2L66.9,445.1L70.7,447.5L68.0,455.7L72.6,466.6L71.0,468.0L56.3,454.3L48.6,463.9L21.8,447.3L25.8,461.4L16.7,463.5L16.2,477.1L20.3,482.4L1.9,501.2Z"/></clipPath>
+        </defs>
+        <g class="rt-hatch" clip-path="url(#rt-clip)"></g>
+        <path class="rt-outline" d="M1.9,501.2L17.9,496.1L22.8,511.1L14.1,515.3L21.6,546.7L25.6,546.1L22.8,537.5L29.3,528.9L49.8,535.7L55.4,525.3L52.4,517.4L63.7,506.7L60.6,502.2L67.3,486.8L82.3,488.5L84.1,498.2L74.8,499.9L81.4,510.2L97.4,510.5L96.2,490.7L119.1,492.1L115.5,484.9L122.3,478.9L121.5,485.9L129.1,489.6L147.1,487.9L140.2,495.2L147.5,504.8L155.1,494.7L173.8,514.4L233.1,514.4L233.1,471.5L254.6,466.6L262.7,473.5L271.1,460.0L284.0,460.1L288.6,455.1L284.1,450.4L291.0,447.6L307.7,460.7L303.8,463.6L324.9,489.7L318.3,498.5L328.5,503.6L325.5,513.5L333.2,521.3L329.8,530.2L355.0,526.5L384.1,536.9L387.7,545.6L420.2,545.5L427.2,560.2L436.2,560.2L441.3,555.2L438.6,550.6L445.7,547.5L453.8,565.6L458.3,563.7L464.5,583.2L461.2,584.4L466.7,589.7L497.3,569.7L499.3,576.9L517.1,574.7L521.6,578.3L520.5,585.1L527.9,585.2L527.7,571.8L534.8,570.1L532.6,561.3L537.9,553.5L536.0,533.4L545.4,535.7L561.9,505.8L570.8,512.3L590.2,501.3L589.2,523.7L607.9,521.9L610.9,507.9L625.1,529.5L667.1,537.0L670.4,552.4L663.6,567.7L686.7,566.3L682.4,582.1L690.5,588.8L693.9,582.1L690.9,573.1L699.8,579.7L708.2,561.9L724.6,558.8L729.6,571.2L738.8,552.3L748.8,556.0L747.0,573.4L758.2,585.9L762.9,579.5L768.2,586.3L777.3,580.8L812.9,594.2L805.6,603.0L823.9,598.0L818.4,591.3L827.7,582.7L841.7,598.7L836.3,604.2L839.7,609.2L824.4,609.8L830.4,615.7L827.1,616.7L812.5,614.3L815.3,625.4L833.5,639.7L828.6,654.8L853.4,642.8L855.9,646.6L851.9,649.3L860.6,649.3L860.6,663.8L872.3,677.7L878.8,663.5L891.0,657.1L880.0,613.3L883.3,606.3L881.3,588.7L874.1,577.4L878.5,571.4L874.9,566.0L880.9,563.2L877.2,558.1L881.6,550.6L880.0,529.6L906.5,502.5L901.7,501.1L910.8,483.8L909.3,467.9L903.6,466.6L912.2,443.8L898.5,450.8L887.4,425.8L859.1,410.1L861.6,402.6L856.6,394.6L843.2,393.0L842.2,378.8L872.6,376.9L876.4,372.2L871.3,369.7L880.5,362.7L907.5,366.6L905.5,354.5L917.4,350.9L918.1,338.3L947.4,331.4L944.0,321.4L959.1,303.5L957.4,287.2L985.6,266.7L1000.0,243.8L996.6,238.0L993.8,244.4L986.8,240.9L978.7,230.4L980.5,224.5L964.2,230.3L971.1,223.2L969.1,217.4L956.4,225.0L953.9,216.5L961.0,207.8L941.9,206.6L947.0,201.0L939.5,202.8L921.3,187.3L897.7,191.6L878.0,207.0L854.0,201.6L849.6,185.5L864.7,185.0L861.8,182.6L865.8,173.0L875.3,171.2L871.8,165.3L885.9,162.9L882.4,153.2L890.5,135.3L900.6,138.0L898.4,114.8L901.7,110.1L889.3,111.1L881.5,100.3L853.7,108.0L864.6,115.3L869.7,127.9L869.2,142.1L874.3,146.9L867.1,153.9L857.2,142.5L847.3,143.6L841.8,129.6L832.3,134.1L834.2,140.7L828.9,137.0L832.4,125.6L826.7,127.1L825.6,119.4L829.4,116.5L825.6,113.2L823.3,114.9L828.5,116.3L822.2,119.4L825.8,126.7L819.7,125.0L819.4,120.3L823.0,118.4L814.5,109.2L815.3,99.3L819.4,104.6L818.4,97.8L811.7,97.9L817.6,88.0L814.0,83.9L820.3,61.2L832.3,55.5L832.1,41.3L840.3,37.9L812.3,33.5L815.0,39.0L810.5,46.4L802.4,42.1L815.3,54.1L814.6,62.0L795.4,74.5L788.1,69.7L770.4,100.7L761.9,97.9L756.4,108.6L782.3,114.0L802.9,129.4L793.9,139.3L802.7,139.7L797.6,149.4L778.8,136.8L785.0,153.8L782.1,168.0L785.1,172.1L742.4,148.8L738.1,154.9L748.4,161.3L743.3,167.5L736.5,160.5L731.4,164.7L711.8,144.9L714.5,160.3L706.7,164.3L712.1,180.2L702.8,182.0L705.6,185.5L699.5,193.5L687.1,194.0L689.0,188.3L682.6,176.6L670.5,172.1L667.3,181.6L656.6,183.0L646.1,198.0L646.2,184.8L636.2,184.1L642.8,181.0L640.6,174.1L635.8,184.2L627.1,176.7L604.2,179.5L607.7,185.4L601.8,180.9L602.3,191.7L592.7,167.4L587.3,162.7L583.4,158.1L592.9,167.3L594.3,158.9L625.3,146.8L625.8,135.4L598.1,137.6L580.5,154.3L565.9,148.4L564.5,138.6L543.0,141.1L544.3,136.5L532.7,130.9L535.1,118.4L517.4,120.5L510.9,109.2L523.1,99.7L514.0,80.4L518.3,76.2L498.0,66.9L510.2,82.5L498.2,91.0L475.0,81.9L483.5,68.0L473.9,70.8L462.1,49.2L468.6,42.5L454.8,31.4L462.4,16.6L450.8,25.1L453.7,16.9L436.4,0.0L435.0,10.9L417.0,6.4L413.7,18.0L401.2,15.7L419.0,21.5L421.1,29.8L403.5,40.9L388.2,61.3L382.2,54.5L390.6,45.4L382.9,44.9L372.6,62.8L357.3,55.6L365.9,43.8L357.7,34.8L331.1,43.4L332.9,54.3L323.4,63.5L314.9,62.8L312.8,56.9L317.7,50.0L310.3,49.6L307.0,78.0L297.7,78.0L297.6,86.7L286.0,81.7L281.8,70.6L273.8,71.6L275.3,80.5L257.3,83.0L254.5,98.1L238.9,105.3L241.1,113.0L253.4,110.5L259.9,117.7L257.3,121.8L247.8,119.2L242.5,134.6L228.4,140.4L225.7,156.9L206.3,154.4L209.3,157.4L205.4,162.9L210.8,167.5L202.4,185.0L166.7,190.9L162.3,203.5L171.8,211.6L163.9,212.2L166.3,224.4L145.5,224.6L147.7,229.3L141.3,232.6L141.0,247.4L126.7,246.9L126.0,258.2L119.5,246.1L120.6,257.0L109.0,262.5L109.4,270.0L119.2,265.8L117.8,273.5L128.2,277.4L122.9,288.9L103.2,291.1L104.8,296.9L94.5,305.2L95.1,312.6L78.2,336.2L63.3,329.3L57.0,336.2L64.6,347.5L60.4,366.6L76.7,360.5L79.6,344.4L88.6,356.6L93.5,354.6L88.2,349.1L89.4,339.7L96.6,339.5L109.2,347.7L109.4,360.6L116.7,362.9L122.9,383.8L116.3,388.1L119.9,396.8L116.5,399.4L111.4,390.3L93.5,397.3L97.6,413.7L100.8,404.2L111.5,410.4L104.1,432.2L74.3,430.7L78.0,458.8L84.0,468.2L76.3,465.8L69.9,443.2L66.9,445.1L70.7,447.5L68.0,455.7L72.6,466.6L71.0,468.0L56.3,454.3L48.6,463.9L21.8,447.3L25.8,461.4L16.7,463.5L16.2,477.1L20.3,482.4L1.9,501.2Z"/>
+        <path class="rt-outline rt-outline--2" d="M1.9,501.2L17.9,496.1L22.8,511.1L14.1,515.3L21.6,546.7L25.6,546.1L22.8,537.5L29.3,528.9L49.8,535.7L55.4,525.3L52.4,517.4L63.7,506.7L60.6,502.2L67.3,486.8L82.3,488.5L84.1,498.2L74.8,499.9L81.4,510.2L97.4,510.5L96.2,490.7L119.1,492.1L115.5,484.9L122.3,478.9L121.5,485.9L129.1,489.6L147.1,487.9L140.2,495.2L147.5,504.8L155.1,494.7L173.8,514.4L233.1,514.4L233.1,471.5L254.6,466.6L262.7,473.5L271.1,460.0L284.0,460.1L288.6,455.1L284.1,450.4L291.0,447.6L307.7,460.7L303.8,463.6L324.9,489.7L318.3,498.5L328.5,503.6L325.5,513.5L333.2,521.3L329.8,530.2L355.0,526.5L384.1,536.9L387.7,545.6L420.2,545.5L427.2,560.2L436.2,560.2L441.3,555.2L438.6,550.6L445.7,547.5L453.8,565.6L458.3,563.7L464.5,583.2L461.2,584.4L466.7,589.7L497.3,569.7L499.3,576.9L517.1,574.7L521.6,578.3L520.5,585.1L527.9,585.2L527.7,571.8L534.8,570.1L532.6,561.3L537.9,553.5L536.0,533.4L545.4,535.7L561.9,505.8L570.8,512.3L590.2,501.3L589.2,523.7L607.9,521.9L610.9,507.9L625.1,529.5L667.1,537.0L670.4,552.4L663.6,567.7L686.7,566.3L682.4,582.1L690.5,588.8L693.9,582.1L690.9,573.1L699.8,579.7L708.2,561.9L724.6,558.8L729.6,571.2L738.8,552.3L748.8,556.0L747.0,573.4L758.2,585.9L762.9,579.5L768.2,586.3L777.3,580.8L812.9,594.2L805.6,603.0L823.9,598.0L818.4,591.3L827.7,582.7L841.7,598.7L836.3,604.2L839.7,609.2L824.4,609.8L830.4,615.7L827.1,616.7L812.5,614.3L815.3,625.4L833.5,639.7L828.6,654.8L853.4,642.8L855.9,646.6L851.9,649.3L860.6,649.3L860.6,663.8L872.3,677.7L878.8,663.5L891.0,657.1L880.0,613.3L883.3,606.3L881.3,588.7L874.1,577.4L878.5,571.4L874.9,566.0L880.9,563.2L877.2,558.1L881.6,550.6L880.0,529.6L906.5,502.5L901.7,501.1L910.8,483.8L909.3,467.9L903.6,466.6L912.2,443.8L898.5,450.8L887.4,425.8L859.1,410.1L861.6,402.6L856.6,394.6L843.2,393.0L842.2,378.8L872.6,376.9L876.4,372.2L871.3,369.7L880.5,362.7L907.5,366.6L905.5,354.5L917.4,350.9L918.1,338.3L947.4,331.4L944.0,321.4L959.1,303.5L957.4,287.2L985.6,266.7L1000.0,243.8L996.6,238.0L993.8,244.4L986.8,240.9L978.7,230.4L980.5,224.5L964.2,230.3L971.1,223.2L969.1,217.4L956.4,225.0L953.9,216.5L961.0,207.8L941.9,206.6L947.0,201.0L939.5,202.8L921.3,187.3L897.7,191.6L878.0,207.0L854.0,201.6L849.6,185.5L864.7,185.0L861.8,182.6L865.8,173.0L875.3,171.2L871.8,165.3L885.9,162.9L882.4,153.2L890.5,135.3L900.6,138.0L898.4,114.8L901.7,110.1L889.3,111.1L881.5,100.3L853.7,108.0L864.6,115.3L869.7,127.9L869.2,142.1L874.3,146.9L867.1,153.9L857.2,142.5L847.3,143.6L841.8,129.6L832.3,134.1L834.2,140.7L828.9,137.0L832.4,125.6L826.7,127.1L825.6,119.4L829.4,116.5L825.6,113.2L823.3,114.9L828.5,116.3L822.2,119.4L825.8,126.7L819.7,125.0L819.4,120.3L823.0,118.4L814.5,109.2L815.3,99.3L819.4,104.6L818.4,97.8L811.7,97.9L817.6,88.0L814.0,83.9L820.3,61.2L832.3,55.5L832.1,41.3L840.3,37.9L812.3,33.5L815.0,39.0L810.5,46.4L802.4,42.1L815.3,54.1L814.6,62.0L795.4,74.5L788.1,69.7L770.4,100.7L761.9,97.9L756.4,108.6L782.3,114.0L802.9,129.4L793.9,139.3L802.7,139.7L797.6,149.4L778.8,136.8L785.0,153.8L782.1,168.0L785.1,172.1L742.4,148.8L738.1,154.9L748.4,161.3L743.3,167.5L736.5,160.5L731.4,164.7L711.8,144.9L714.5,160.3L706.7,164.3L712.1,180.2L702.8,182.0L705.6,185.5L699.5,193.5L687.1,194.0L689.0,188.3L682.6,176.6L670.5,172.1L667.3,181.6L656.6,183.0L646.1,198.0L646.2,184.8L636.2,184.1L642.8,181.0L640.6,174.1L635.8,184.2L627.1,176.7L604.2,179.5L607.7,185.4L601.8,180.9L602.3,191.7L592.7,167.4L587.3,162.7L583.4,158.1L592.9,167.3L594.3,158.9L625.3,146.8L625.8,135.4L598.1,137.6L580.5,154.3L565.9,148.4L564.5,138.6L543.0,141.1L544.3,136.5L532.7,130.9L535.1,118.4L517.4,120.5L510.9,109.2L523.1,99.7L514.0,80.4L518.3,76.2L498.0,66.9L510.2,82.5L498.2,91.0L475.0,81.9L483.5,68.0L473.9,70.8L462.1,49.2L468.6,42.5L454.8,31.4L462.4,16.6L450.8,25.1L453.7,16.9L436.4,0.0L435.0,10.9L417.0,6.4L413.7,18.0L401.2,15.7L419.0,21.5L421.1,29.8L403.5,40.9L388.2,61.3L382.2,54.5L390.6,45.4L382.9,44.9L372.6,62.8L357.3,55.6L365.9,43.8L357.7,34.8L331.1,43.4L332.9,54.3L323.4,63.5L314.9,62.8L312.8,56.9L317.7,50.0L310.3,49.6L307.0,78.0L297.7,78.0L297.6,86.7L286.0,81.7L281.8,70.6L273.8,71.6L275.3,80.5L257.3,83.0L254.5,98.1L238.9,105.3L241.1,113.0L253.4,110.5L259.9,117.7L257.3,121.8L247.8,119.2L242.5,134.6L228.4,140.4L225.7,156.9L206.3,154.4L209.3,157.4L205.4,162.9L210.8,167.5L202.4,185.0L166.7,190.9L162.3,203.5L171.8,211.6L163.9,212.2L166.3,224.4L145.5,224.6L147.7,229.3L141.3,232.6L141.0,247.4L126.7,246.9L126.0,258.2L119.5,246.1L120.6,257.0L109.0,262.5L109.4,270.0L119.2,265.8L117.8,273.5L128.2,277.4L122.9,288.9L103.2,291.1L104.8,296.9L94.5,305.2L95.1,312.6L78.2,336.2L63.3,329.3L57.0,336.2L64.6,347.5L60.4,366.6L76.7,360.5L79.6,344.4L88.6,356.6L93.5,354.6L88.2,349.1L89.4,339.7L96.6,339.5L109.2,347.7L109.4,360.6L116.7,362.9L122.9,383.8L116.3,388.1L119.9,396.8L116.5,399.4L111.4,390.3L93.5,397.3L97.6,413.7L100.8,404.2L111.5,410.4L104.1,432.2L74.3,430.7L78.0,458.8L84.0,468.2L76.3,465.8L69.9,443.2L66.9,445.1L70.7,447.5L68.0,455.7L72.6,466.6L71.0,468.0L56.3,454.3L48.6,463.9L21.8,447.3L25.8,461.4L16.7,463.5L16.2,477.1L20.3,482.4L1.9,501.2Z"/>
+        <path class="rt-route" d="M267,223 C340,250 420,270 470,262 S560,236 593,241"/>
+        <g class="rt-pt rt-pt--kzn" transform="translate(267 223)">
+          <circle r="6"/><text x="-14" y="-16" text-anchor="end">Казань · офис</text>
+        </g>
+        <g class="rt-pt rt-pt--now" transform="translate(593 241)">
+          <circle class="rt-pulse" r="10"/><circle class="rt-pulse rt-pulse--2" r="10"/><circle r="7"/>
+          <text x="18" y="-18">ГК «Регина», Мамадыш</text>
+          <text class="rt-sub" x="18" y="6">сейчас*</text>
+        </g>
+      </svg>
+      <figcaption class="moved-legend">
+        <p class="lbl">Легенда · базы в&nbsp;разные годы</p>
+        <ul>
+          <li class="was"><i></i>ДОЛ «Чайка» <em>была</em></li>
+          <li class="was"><i></i>ДОЛ «Родничок» <em>была</em></li>
+          <li class="now"><i></i>ГК «Регина», Мамадыш <em>сейчас*</em></li>
+        </ul>
+        <p class="moved-foot">*по последним данным. Старые базы на&nbsp;схеме не&nbsp;отмечаем: важнее, кто туда ехал.</p>
+      </figcaption>
+      <p class="note note--moved" aria-hidden="true">там Вятка и огромное небо</p>
+    </figure>
+
+    <div class="moved-photo reveal-img">
+      <img src="assets/img/base-regina.webp" width="900" height="640" loading="lazy" alt="Большой круг участников перед корпусом ГК «Регина»">
+      <span class="ph-tag">ГК «Регина» · отряды в круге</span>
+    </div>
+
+    <ul class="plates">
+      <li class="plate"><b class="count" data-to="25" data-suffix="+">25+</b><span>лет — и&nbsp;это всё ещё одна территория</span></li>
+      <li class="plate"><b><small>с</small> <span class="count" data-to="7">7</span></b><span>лет — программы для 1–11&nbsp;классов</span></li>
+      <li class="plate plate--flame"><b><span class="count" data-to="1">1</span><small>-е</small></b><span>место в&nbsp;рейтинге лагерей&nbsp;РТ*</span><i>*по данным лагеря</i></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 · АТЛАС ТРАДИЦИЙ -->
+<section class="atlas tone-paper" id="atlas" aria-labelledby="atlas-title">
+  <div class="wrap">
+    <div class="atlas-head">
+      <p class="coord"><span>55.70°N · 04</span> Атлас традиций</p>
+      <h2 class="h2" id="atlas-title"><span data-aud-text data-parent="Традиции, которые работают лучше нотаций" data-kid="Здесь у каждого вечера есть имя">Традиции, которые работают лучше нотаций</span></h2>
+      <p class="atlas-hint mono">наведи на высоту или&nbsp;выбери в&nbsp;легенде ↓</p>
+    </div>
+    <div class="atlas-body">
+      <div class="atlas-map">
+        <svg class="atlas-svg" viewBox="0 0 1000 720" aria-hidden="true"></svg>
+        <div class="atlas-compass" aria-hidden="true">N</div>
+        <p class="note note--atlas" aria-hidden="true">отмечено вожатыми, проверено отрядами</p>
+      </div>
+      <aside class="atlas-card" aria-live="polite">
+        <div class="ac-inner">
+          <p class="ac-no mono"><span>01</span> / 08</p>
+          <h3 class="ac-title">Орлятский круг</h3>
+          <p class="ac-text">В&nbsp;конце дня отряд встаёт в&nbsp;круг.</p>
+          <div class="ac-photo"><img src="assets/img/atlas-krug.webp" width="720" height="480" alt="" loading="lazy"></div>
+        </div>
+      </aside>
+    </div>
+    <ol class="atlas-list" aria-label="Традиции на карте">
+      <li><button type="button" data-region="krug">Орлятский круг</button></li>
+      <li><button type="button" data-region="vecherka">Вечёрка</button></li>
+      <li><button type="button" data-region="vizitki">Визитки</button></li>
+      <li><button type="button" data-region="quest">Квесты и&nbsp;мистерии</button></li>
+      <li><button type="button" data-region="kvn">Психологический КВН</button></li>
+      <li><button type="button" data-region="pautinka">«Паутинка»</button></li>
+      <li><button type="button" data-region="turnir">Турнир дружеских компаний</button></li>
+      <li><button type="button" data-region="svechka">Свечка</button></li>
+    </ol>
+    <div class="atlas-swipe" aria-label="Карточки традиций"></div>
+  </div>
+</section>
+
+<!-- 05 · ЧЕТЫРЕ СМЕНЫ — ЧЕТЫРЕ ЭКСПЕДИЦИИ -->
+<section class="shifts" id="shifts" aria-labelledby="shifts-title">
+  <div class="shifts-pin">
+    <div class="shifts-top">
+      <p class="coord"><span>55.69°N · 05</span> Экспедиции</p>
+      <h2 class="shifts-title" id="shifts-title"><span data-aud-text data-parent="Четыре смены — четыре экспедиции" data-kid="Четыре экспедиции. Выбирай свою">Четыре смены — четыре экспедиции</span></h2>
+    </div>
+    <div class="shifts-track">
+
+      <article class="sheet sheet--1" data-hidden="terra">
+        <span class="sheet-no" aria-hidden="true">01</span>
+        <div class="sheet-photo">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/shift-quest-sm.webp">
+            <img src="assets/img/shift-quest.webp" width="1200" height="1400" loading="lazy" alt="Участники в костюмах: пиджак, корона, бабочка — сюжетная игра">
+          </picture>
+          <span class="ph-tag">игровая ролевая</span>
+        </div>
+        <div class="sheet-body">
+          <p class="lbl">Экспедиция 01 · игровая ролевая</p>
+          <h3 class="sheet-title">Квес<span class="hid">ТТеРРа</span>: <br>Эпоха Просвещения</h3>
+          <p>Иммерсивное путешествие по&nbsp;сюжетам шедевров XVIII&nbsp;века. Здесь в&nbsp;историю не&nbsp;заглядывают&nbsp;— в&nbsp;неё входят: получают роль, ищут ключи и&nbsp;сами решают, чем закончится глава.</p>
+          <ul class="inside">
+            <li>квесты по&nbsp;мотивам шедевров</li>
+            <li>сюжетно-ролевые игры</li>
+            <li>мистерии</li>
+            <li>костюм и&nbsp;роль для каждого</li>
+          </ul>
+          <p class="hid-note mono" aria-hidden="true">в названии прячется <b>ТЕРРА</b></p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--2" data-hidden="my">
+        <span class="sheet-no" aria-hidden="true">02</span>
+        <div class="sheet-photo">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/shift-mir-sm.webp">
+            <img src="assets/img/shift-mir.webp" width="1200" height="1400" loading="lazy" alt="Девочки смеются, обнимаются и снимают друг друга на телефон">
+          </picture>
+          <span class="ph-tag">психологическая</span>
+        </div>
+        <div class="sheet-body">
+          <p class="lbl">Экспедиция 02 · психологическая</p>
+          <h3 class="sheet-title">Эти Тонкие <span class="hid-m">М</span>ир<span class="hid-y">Ы</span></h3>
+          <p>Смена про этику и&nbsp;психологию отношений&nbsp;— с&nbsp;друзьями, с&nbsp;родителями, с&nbsp;самим собой. Про то, о&nbsp;чём в&nbsp;школе не&nbsp;говорят, а&nbsp;спросить очень хочется.</p>
+          <ul class="inside">
+            <li>тренинги с&nbsp;психологами</li>
+            <li>отдельные мужской и&nbsp;женский круги</li>
+            <li>честные разговоры без неловкости</li>
+            <li>вечерняя сцена</li>
+          </ul>
+          <p class="hid-note mono" aria-hidden="true">в «МирЫ» спрятано <b>МЫ</b></p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--3" data-hidden="terra">
+        <span class="sheet-no" aria-hidden="true">03</span>
+        <div class="sheet-photo">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/shift-prof-sm.webp">
+            <img src="assets/img/shift-prof.webp" width="1200" height="1400" loading="lazy" alt="Съёмка с профессиональной видеокамерой на открытом воздухе">
+          </picture>
+          <span class="ph-tag">профориентационная</span>
+        </div>
+        <div class="sheet-body">
+          <p class="lbl">Экспедиция 03 · профориентационная</p>
+          <h3 class="sheet-title">Проф<span class="hid">Терра</span></h3>
+          <p>Много профилей&nbsp;— и&nbsp;в&nbsp;каждом можно попробовать дело руками, а&nbsp;не&nbsp;выбирать профессию по&nbsp;тесту. Для тех, кто хочет больше практики языка, есть вариант с&nbsp;English camp.</p>
+          <ul class="inside">
+            <li>профили на&nbsp;выбор</li>
+            <li>мастер-классы</li>
+            <li>вариант с&nbsp;English camp</li>
+            <li>сцена и&nbsp;игры никуда не&nbsp;деваются</li>
+          </ul>
+          <p class="hid-note mono" aria-hidden="true">и здесь — <b>ТЕРРА</b></p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--4" data-hidden="tm">
+        <span class="sheet-no" aria-hidden="true">04</span>
+        <div class="sheet-photo">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/shift-fest-sm.webp">
+            <img src="assets/img/shift-fest.webp" width="1200" height="1400" loading="lazy" alt="Ребята бегут через спортивную площадку во время игры">
+          </picture>
+          <span class="ph-tag">фестиваль игр</span>
+        </div>
+        <div class="sheet-body">
+          <p class="lbl">Экспедиция 04 · фестиваль</p>
+          <h3 class="sheet-title"><span class="tm"><span class="tm-short">ТМ</span><span class="tm-long">Территория&nbsp;МЫ</span></span>-фест <br>«Вселенная игр»</h3>
+          <p>Фестиваль игр всех форматов. Сегодня ты стратег, завтра капитан, послезавтра проигрываешь&nbsp;— и&nbsp;узнаёшь о&nbsp;себе больше, чем после победы.</p>
+          <ul class="inside">
+            <li>спортивные и&nbsp;командные</li>
+            <li>настольные и&nbsp;стратегические</li>
+            <li>ролевые</li>
+            <li>чемпионаты</li>
+          </ul>
+          <p class="hid-note mono" aria-hidden="true">наведи на <b>ТМ</b></p>
+        </div>
+      </article>
+
+    </div>
+    <div class="shifts-foot">
+      <div class="route" aria-hidden="true">
+        <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path class="route-bg" d="M4,12 C60,2 90,22 136,12 S220,2 268,12 S350,22 396,12"/><path class="route-fg" d="M4,12 C60,2 90,22 136,12 S220,2 268,12 S350,22 396,12"/></svg>
+        <i style="left:1%"></i><i style="left:34%"></i><i style="left:67%"></i><i style="left:99%"></i>
+      </div>
+      <a class="shifts-tg mono" href="https://t.me/tmvkadre" target="_blank" rel="noopener" data-cursor="открыть">Даты и программы нового сезона — в&nbsp;Telegram-канале&nbsp;↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · СУТКИ НА ТЕРРИТОРИИ -->
+<section class="day" id="day" aria-labelledby="day-title">
+  <div class="day-pin">
+    <canvas class="day-stars" aria-hidden="true"></canvas>
+    <div class="day-head">
+      <p class="coord"><span>55.68°N · 06</span> Сутки</p>
+      <h2 class="h2 day-title" id="day-title"><span data-aud-text data-parent="Сутки, в которых некогда скучать" data-kid="Сутки, в которых некогда залипать в телефон">Сутки, в которых некогда скучать</span></h2>
+    </div>
+    <div class="day-photos" aria-hidden="true">
+      <img src="assets/img/day-morning.webp" width="1100" height="820" alt="" loading="lazy" class="is-on">
+      <img src="assets/img/day-day.webp" width="1100" height="820" alt="" loading="lazy">
+      <img src="assets/img/day-evening.webp" width="1100" height="820" alt="" loading="lazy">
+      <img src="assets/img/day-night.webp" width="1100" height="820" alt="" loading="lazy">
+    </div>
+    <div class="dial" aria-hidden="true">
+      <svg viewBox="-200 -200 400 400">
+        <circle class="dial-ring" r="182"/>
+        <circle class="dial-ring dial-ring--in" r="150"/>
+        <g class="dial-ticks"></g>
+        <text class="dial-l" x="0" y="-124">УТРО</text>
+        <text class="dial-l" x="122" y="2">ДЕНЬ</text>
+        <text class="dial-l" x="0" y="128">ВЕЧЕР</text>
+        <text class="dial-l" x="-122" y="2">НОЧЬ</text>
+        <g class="dial-needle"><path d="M0,-132 L11,0 L0,18 L-11,0 Z"/><circle r="6"/></g>
+      </svg>
+    </div>
+    <ol class="phases">
+      <li class="phase is-on"><span class="mono">01 · утро</span><h3>Включаемся</h3><p>Тренинги, мастер-классы, профили смены. Голова просыпается раньше, чем кажется.</p></li>
+      <li class="phase"><span class="mono">02 · день</span><h3>Играем всерьёз</h3><p>Квесты, сюжетно-ролевые игры, турниры. Правила простые, ставки&nbsp;— настоящие.</p></li>
+      <li class="phase"><span class="mono">03 · вечер</span><h3>Выходим на&nbsp;сцену</h3><p>Вечёрка, визитки, шоу. Репетировали днём&nbsp;— играем при&nbsp;всех.</p></li>
+      <li class="phase"><span class="mono">04 · ночь</span><h3>Говорим честно</h3><p>Орлятский круг, песни, отряд. Самое важное за&nbsp;день обычно звучит здесь.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 07 · «МАМ, Я ПОБЕЖАЛ» -->
+<section class="phone-sec tone-paper" id="phone" aria-labelledby="phone-title">
+  <div class="edge" data-edge="ink" aria-hidden="true"></div>
+  <div class="wrap phone-grid">
+    <div class="phone" aria-label="Пример переписки ребёнка с мамой">
+      <div class="phone-body">
+        <div class="phone-top"><span class="phone-ava">М</span><span><b>Мама</b><i class="phone-st">в сети</i></span></div>
+        <div class="chat">
+          <p class="msg msg--out">Как ты там?</p>
+          <p class="msg msg--in">Всё хорошо! Прости, бегу — у нас репетиция вечёрки</p>
+          <p class="msg msg--out">Позвони вечером</p>
+          <p class="msg msg--in">Не успею, у нас круг 🙃</p>
+          <p class="typing" aria-hidden="true"><i></i><i></i><i></i></p>
+        </div>
+      </div>
+      <p class="phone-cap mono">переписка — иллюстрация по&nbsp;мотивам отзывов</p>
+    </div>
+    <div class="phone-text">
+      <p class="coord"><span>55.67°N · 07</span> Связь</p>
+      <h2 class="h2" id="phone-title">«Мам, я&nbsp;побежал»</h2>
+      <p class="lead"><span data-aud-text data-parent="Телефоны у детей не забирают. Просто звонки домой становятся очень короткими." data-kid="Телефон остаётся у тебя. Просто будет совсем не до него.">Телефоны у&nbsp;детей не&nbsp;забирают. Просто звонки домой становятся очень короткими.</span></p>
+      <ul class="facts">
+        <li><span class="mono">01</span>Телефон&nbsp;— с&nbsp;собой</li>
+        <li><span class="mono">02</span>Отряд&nbsp;— рядом</li>
+        <li><span class="mono">03</span>Новости смены&nbsp;— в&nbsp;<a href="https://t.me/tmvkadre" target="_blank" rel="noopener" data-cursor="открыть">Telegram-канале</a></li>
+      </ul>
+      <p class="note note--phone" aria-hidden="true">короткий звонок = всё хорошо</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · ПУТЬ: ОТ НОВИЧКА ДО ДОКА -->
+<section class="path" id="path" aria-labelledby="path-title">
+  <div class="edge" data-edge="paper" aria-hidden="true"></div>
+  <div class="wrap path-grid">
+    <div class="path-head">
+      <p class="coord"><span>55.66°N · 08</span> Маршрут</p>
+      <h2 class="h2 split" id="path-title">Наших вожатых не&nbsp;нанимают. Их&nbsp;выращивают.</h2>
+      <p class="lead"><span data-aud-text data-parent="Большинство вожатых когда-то сами приехали сюда детьми." data-kid="Большинство вожатых когда-то сами приехали сюда детьми. Следующим можешь быть ты.">Большинство вожатых когда-то сами приехали сюда детьми.</span></p>
+      <p class="path-logo"><img src="assets/logo/logo-terra.webp" width="210" height="280" alt="" loading="lazy"><span class="note">лестница к солнцу — это и есть наш логотип</span></p>
+    </div>
+    <div class="path-map">
+      <svg class="path-svg" viewBox="0 0 600 1200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="path-line path-line--bg" d="M120,40 C420,120 520,260 330,360 S60,560 250,660 S560,820 420,940 S140,1080 300,1160"/>
+        <path class="path-line path-line--fg" d="M120,40 C420,120 520,260 330,360 S60,560 250,660 S560,820 420,940 S140,1080 300,1160"/>
+      </svg>
+      <ol class="stations">
+        <li class="st" style="--y:3%; --x:20%"><span class="st-dot"></span><div><span class="mono">станция 1 · с&nbsp;7 лет</span><h3>Участник</h3><p>Приезжаешь впервые. Через пару дней у&nbsp;тебя есть отряд и&nbsp;своё место в&nbsp;круге.</p></div></li>
+        <li class="st" style="--y:30%; --x:55%"><span class="st-dot"></span><div><span class="mono">станция 2</span><h3>Советник</h3><p>Помощник вожатого. Уже не&nbsp;только играешь, но&nbsp;и&nbsp;помогаешь игре случиться.</p></div></li>
+        <li class="st" style="--y:55%; --x:41%"><span class="st-dot"></span><div><span class="mono">станция 3</span><h3>Док</h3><p>Вожатый. Сначала школа вожатых, стажировка и&nbsp;экзамены&nbsp;— и&nbsp;только потом отряд.</p></div></li>
+        <li class="st" style="--y:80%; --x:68%"><span class="st-dot"></span><div><span class="mono">станция 4</span><h3>Команда</h3><p>Психолог, педагог, администратор. Те, кто когда-то сидел в&nbsp;этом&nbsp;же круге.</p></div></li>
+      </ol>
+    </div>
+    <div class="stage-all">
+      <p class="lbl">На сцену выходит каждый</p>
+      <p>Роли на&nbsp;вечёрках получает каждый отряд&nbsp;— и&nbsp;внутри отряда каждый. Кто-то поёт, кто-то держит свет, кто-то впервые говорит со&nbsp;сцены, и&nbsp;это тоже главная роль.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · ПОЛЕВОЙ АРХИВ -->
+<section class="archive tone-paper" id="archive" aria-labelledby="archive-title">
+  <div class="edge" data-edge="ink" aria-hidden="true"></div>
+  <div class="wrap archive-head">
+    <div>
+      <p class="coord"><span>55.65°N · 09</span> Полевой архив</p>
+      <h2 class="h2" id="archive-title">Стол с&nbsp;отпечатками</h2>
+    </div>
+    <div class="archive-tools">
+      <p class="mono archive-hint"><span class="hint-desk">тащи фотографии · клик&nbsp;— открыть</span><span class="hint-mob">смахни верхнюю · тап&nbsp;— открыть</span></p>
+      <button type="button" class="btn btn--line btn--sm" id="arrange" aria-pressed="false" data-cursor="разложить"><span>Разложить по&nbsp;порядку</span></button>
+    </div>
+  </div>
+  <div class="desk" id="desk">
+    <canvas class="desk-topo" aria-hidden="true"></canvas>
+    <ul class="prints">
+      <li class="print"><button type="button" class="print-btn" data-i="0" data-full="assets/img/arch-01.webp" data-fw="1280" data-fh="852" data-cursor="тащи"><img src="assets/img/arch-01-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Отряд вручает подарок, все в красных галстуках" draggable="false"><span class="print-no mono" aria-hidden="true">01</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="1" data-full="assets/img/arch-02.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-02-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Театр теней: силуэты на подсвеченном полотне" draggable="false"><span class="print-no mono" aria-hidden="true">02</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="2" data-full="assets/img/arch-03.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-03-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Объятия на зимней смене" draggable="false"><span class="print-no mono" aria-hidden="true">03</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="3" data-full="assets/img/arch-04.webp" data-fw="800" data-fh="600" data-cursor="тащи"><img src="assets/img/arch-04-t.webp" width="560" height="420" loading="lazy" decoding="async" alt="Песни под две гитары" draggable="false"><span class="print-no mono" aria-hidden="true">04</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="4" data-full="assets/img/arch-05.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-05-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Буквы «ТМ», нарисованные светом" draggable="false"><span class="print-no mono" aria-hidden="true">05</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="5" data-full="assets/img/arch-06.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-06-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Ночной танцевальный баттл с красками Холи" draggable="false"><span class="print-no mono" aria-hidden="true">06</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="6" data-full="assets/img/arch-07.webp" data-fw="600" data-fh="800" data-cursor="тащи"><img src="assets/img/arch-07-t.webp" width="420" height="560" loading="lazy" decoding="async" alt="Фотомарафон: костюмы среди поля" draggable="false"><span class="print-no mono" aria-hidden="true">07</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="7" data-full="assets/img/arch-08.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-08-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Подруги обнимаются в первый день смены" draggable="false"><span class="print-no mono" aria-hidden="true">08</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="8" data-full="assets/img/arch-09.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-09-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Разговор в кругу на пенках" draggable="false"><span class="print-no mono" aria-hidden="true">09</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="9" data-full="assets/img/arch-10.webp" data-fw="800" data-fh="600" data-cursor="тащи"><img src="assets/img/arch-10-t.webp" width="560" height="420" loading="lazy" decoding="async" alt="Грим на фотомарафоне" draggable="false"><span class="print-no mono" aria-hidden="true">10</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="10" data-full="assets/img/arch-11.webp" data-fw="800" data-fh="600" data-cursor="тащи"><img src="assets/img/arch-11-t.webp" width="560" height="420" loading="lazy" decoding="async" alt="Руки в центр — отряд в сборе" draggable="false"><span class="print-no mono" aria-hidden="true">11</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="11" data-full="assets/img/arch-12.webp" data-fw="600" data-fh="800" data-cursor="тащи"><img src="assets/img/arch-12-t.webp" width="420" height="560" loading="lazy" decoding="async" alt="Костюм для фотомарафона «Успеть за 22 минуты»" draggable="false"><span class="print-no mono" aria-hidden="true">12</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="12" data-full="assets/img/arch-13.webp" data-fw="800" data-fh="569" data-cursor="тащи"><img src="assets/img/arch-13-t.webp" width="560" height="398" loading="lazy" decoding="async" alt="Победный крик на турнире" draggable="false"><span class="print-no mono" aria-hidden="true">13</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="13" data-full="assets/img/arch-14.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-14-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Последний день смены: общее фото" draggable="false"><span class="print-no mono" aria-hidden="true">14</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="14" data-full="assets/img/arch-15.webp" data-fw="800" data-fh="533" data-cursor="тащи"><img src="assets/img/arch-15-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Зимний вечер на улице" draggable="false"><span class="print-no mono" aria-hidden="true">15</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="15" data-full="assets/img/arch-16.webp" data-fw="800" data-fh="534" data-cursor="тащи"><img src="assets/img/arch-16-t.webp" width="560" height="374" loading="lazy" decoding="async" alt="Прыжок на сцене" draggable="false"><span class="print-no mono" aria-hidden="true">16</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="16" data-full="assets/img/arch-17.webp" data-fw="1200" data-fh="1800" data-cursor="тащи"><img src="assets/img/arch-17-t.webp" width="373" height="560" loading="lazy" decoding="async" alt="Командное задание на полу" draggable="false"><span class="print-no mono" aria-hidden="true">17</span></button></li>
+      <li class="print"><button type="button" class="print-btn" data-i="17" data-full="assets/img/arch-18.webp" data-fw="1280" data-fh="853" data-cursor="тащи"><img src="assets/img/arch-18-t.webp" width="560" height="373" loading="lazy" decoding="async" alt="Игра на улице: шапки, шляпы и хоровод" draggable="false"><span class="print-no mono" aria-hidden="true">18</span></button></li>
+    </ul>
+    <p class="note note--desk" aria-hidden="true">больше — в tmvkadre</p>
+  </div>
+</section>
+
+<!-- лайтбокс -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото" hidden>
+  <div class="lb-bg"></div>
+  <figure class="lb-fig"><img class="lb-img" alt=""><figcaption class="lb-cap"></figcaption></figure>
+  <p class="lb-count mono"><span class="lb-n">01</span> / <span class="lb-t">18</span></p>
+  <button type="button" class="lb-btn lb-prev" aria-label="Предыдущее фото">←</button>
+  <button type="button" class="lb-btn lb-next" aria-label="Следующее фото">→</button>
+  <button type="button" class="lb-btn lb-close" aria-label="Закрыть">×</button>
+</div>
+
+<!-- 10 · ГОЛОСА ТЕРРИТОРИИ -->
+<section class="voices" id="voices" aria-labelledby="voices-title">
+  <div class="edge" data-edge="paper" aria-hidden="true"></div>
+  <canvas class="voices-quote" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="coord"><span>55.64°N · 10</span> Голоса Территории</p>
+    <h2 class="visually-hidden" id="voices-title">Голоса Территории</h2>
+    <blockquote class="vq" aria-live="polite">
+      <p class="vq-text">Многие возвращаются отсюда новыми людьми, более готовыми ко&nbsp;взрослой жизни.</p>
+      <footer class="vq-who"><b>Егор&nbsp;В.</b> · выпускник, отдал лагерю много лет</footer>
+    </blockquote>
+    <div class="vq-marks" role="tablist" aria-label="Чей отзыв">
+      <button type="button" role="tab" aria-selected="true" data-q="0"><span class="mono">01</span>Егор В.</button>
+      <button type="button" role="tab" aria-selected="false" data-q="1"><span class="mono">02</span>мама трёх участников</button>
+      <button type="button" role="tab" aria-selected="false" data-q="2"><span class="mono">03</span>Ксения И.</button>
+      <button type="button" role="tab" aria-selected="false" data-q="3"><span class="mono">04</span>Анастасия</button>
+      <button type="button" role="tab" aria-selected="false" data-q="4"><span class="mono">05</span>Юлиана Г.</button>
+      <button type="button" role="tab" aria-selected="false" data-q="5"><span class="mono">06</span>Артур Ш.</button>
+    </div>
+    <p class="vq-src mono">цитаты — из&nbsp;отзывов на&nbsp;Яндекс.Картах, сокращены</p>
+  </div>
+</section>
+
+<!-- 11 · РОДИТЕЛИ СПРАШИВАЮТ -->
+<section class="faq tone-paper" id="faq" aria-labelledby="faq-title">
+  <div class="edge" data-edge="ink" aria-hidden="true"></div>
+  <div class="wrap faq-grid">
+    <div class="faq-head">
+      <p class="coord"><span>55.63°N · 11</span> Вопросы</p>
+      <h2 class="h2" id="faq-title"><span data-aud-text data-parent="Родители спрашивают" data-kid="Что спрашивают родители (покажи им)">Родители спрашивают</span></h2>
+      <p class="note note--faq" aria-hidden="true">остальное — в Telegram, ответим</p>
+    </div>
+    <div class="acc">
+      <div class="acc-item">
+        <h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="q1" id="q1b"><span class="mono">01</span>С&nbsp;какого возраста можно?<i aria-hidden="true"></i></button></h3>
+        <div class="acc-panel" id="q1" role="region" aria-labelledby="q1b" hidden><div class="acc-in"><svg class="acc-line" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 C80,0 160,10 240,5 S400,0 480,5 S560,10 600,5"/></svg><p>С&nbsp;7&nbsp;лет. Программы рассчитаны на&nbsp;1–11&nbsp;классы, а&nbsp;отряды собирают так, чтобы рядом были ровесники.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="q2" id="q2b"><span class="mono">02</span>Забирают ли телефоны?<i aria-hidden="true"></i></button></h3>
+        <div class="acc-panel" id="q2" role="region" aria-labelledby="q2b" hidden><div class="acc-in"><svg class="acc-line" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 C80,0 160,10 240,5 S400,0 480,5 S560,10 600,5"/></svg><p>Нет. Телефон остаётся у&nbsp;ребёнка. Родители в&nbsp;отзывах честно пишут, что звонки становятся короткими&nbsp;— просто потому что некогда.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="q3" id="q3b"><span class="mono">03</span>Кто вожатые?<i aria-hidden="true"></i></button></h3>
+        <div class="acc-panel" id="q3" role="region" aria-labelledby="q3b" hidden><div class="acc-in"><svg class="acc-line" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 C80,0 160,10 240,5 S400,0 480,5 S560,10 600,5"/></svg><p>Выпускники лагеря. Путь такой: участник, советник, док. Перед тем как получить отряд, вожатый проходит школу вожатых, стажировку и&nbsp;экзамены.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="q4" id="q4b"><span class="mono">04</span>Смены бывают только летом?<i aria-hidden="true"></i></button></h3>
+        <div class="acc-panel" id="q4" role="region" aria-labelledby="q4b" hidden><div class="acc-in"><svg class="acc-line" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 C80,0 160,10 240,5 S400,0 480,5 S560,10 600,5"/></svg><p>Нет. Есть осенние, зимние и&nbsp;весенние смены, а&nbsp;ещё&nbsp;— выездные заезды для школьных классов.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="q5" id="q5b"><span class="mono">05</span>Где проходят смены?<i aria-hidden="true"></i></button></h3>
+        <div class="acc-panel" id="q5" role="region" aria-labelledby="q5b" hidden><div class="acc-in"><svg class="acc-line" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 C80,0 160,10 240,5 S400,0 480,5 S560,10 600,5"/></svg><p>По&nbsp;последним данным&nbsp;— в&nbsp;гостиничном комплексе «Регина» в&nbsp;Мамадыше. Базу на&nbsp;конкретную смену уточняйте в&nbsp;Telegram&nbsp;— <span class="mono tag-check">уточняется</span></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · ФИНАЛ -->
+<section class="final" id="contact" aria-labelledby="final-title">
+  <div class="edge" data-edge="paper" aria-hidden="true"></div>
+  <div class="final-stage" aria-hidden="true">
+    <canvas class="ya-canvas ya-canvas--final" data-word="МЫ"></canvas>
+  </div>
+  <div class="wrap final-in">
+    <p class="coord"><span>55.78°N · 12</span> Связь</p>
+    <h2 class="final-title" id="final-title"><span data-aud-text data-parent="Территория начинается с сообщения" data-kid="Уговори родителей. Начни с сообщения">Территория начинается с&nbsp;сообщения</span></h2>
+    <a class="btn btn--flame btn--xl magnet" href="https://t.me/territory_us" target="_blank" rel="noopener" data-cursor="написать"><span>Написать в&nbsp;Telegram</span></a>
+    <ul class="signs">
+      <li><a class="sign" href="https://t.me/territory_us" target="_blank" rel="noopener" data-cursor="открыть"><span class="mono">01 · telegram</span><b>@territory_us</b><i>↗</i></a></li>
+      <li><a class="sign" href="tel:+79270394222" data-cursor="позвонить"><span class="mono">02 · телефон</span><b>+7&nbsp;(927)&nbsp;039-42-22</b><i>↗</i></a></li>
+      <li><a class="sign" href="https://max.ru/89270394222" target="_blank" rel="noopener" data-cursor="открыть"><span class="mono">03 · max</span><b>MAX</b><i>↗</i></a></li>
+      <li><a class="sign" href="https://vk.ru/territorymy" target="_blank" rel="noopener" data-cursor="открыть"><span class="mono">04 · вконтакте</span><b>vk.ru/territorymy</b><i>↗</i></a></li>
+    </ul>
+    <p class="addr"><span class="mono">офис</span> Казань, ул.&nbsp;Спартаковская,&nbsp;2 (ТЦ&nbsp;«Караван»)<span class="addr-sep"> · </span><span class="addr-metro">≈730&nbsp;м от&nbsp;метро «Площадь Тукая»</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-brand">
+      <img src="assets/logo/logo-terra.webp" width="210" height="280" alt="Логотип «Территория МЫ»: лестница к солнцу-спирали" loading="lazy">
+      <p>Республиканский интеллектуально-психологический лагерь «Территория&nbsp;МЫ»</p>
+    </div>
+    <ul class="ftr-links">
+      <li><a href="https://t.me/territory_us" target="_blank" rel="noopener">Telegram</a></li>
+      <li><a href="https://t.me/tmvkadre" target="_blank" rel="noopener">Канал «в кадре»</a></li>
+      <li><a href="https://vk.ru/territorymy" target="_blank" rel="noopener">ВКонтакте</a></li>
+      <li><a href="https://max.ru/89270394222" target="_blank" rel="noopener">MAX</a></li>
+    </ul>
+    <p class="ftr-demo mono">Демо-версия сайта · Разработка — <a href="https://t.me/creetol" target="_blank" rel="noopener">@creetol</a></p>
+  </div>
+  <canvas class="ftr-my" aria-hidden="true"></canvas>
+</footer>
+
+<!-- компас прогресса -->
+<nav class="compass" id="compass" aria-label="Навигация по разделам">
+  <button type="button" class="compass-btn" aria-expanded="false" aria-controls="compass-menu" aria-label="Открыть карту разделов">
+    <svg viewBox="-30 -30 60 60" aria-hidden="true"><circle r="27"/><circle class="compass-prog" r="27" pathLength="1"/><g class="compass-needle"><path d="M0,-19 L5,0 L0,4 L-5,0Z"/><path class="s" d="M0,19 L5,0 L0,-4 L-5,0Z"/></g></svg>
+  </button>
+  <ul class="compass-menu" id="compass-menu">
+    <li><a href="#hero"><span class="mono">01</span>Карта</a></li>
+    <li><a href="#manifest"><span class="mono">02</span>Манифест</a></li>
+    <li><a href="#moved"><span class="mono">03</span>Переезды</a></li>
+    <li><a href="#atlas"><span class="mono">04</span>Атлас</a></li>
+    <li><a href="#shifts"><span class="mono">05</span>Смены</a></li>
+    <li><a href="#day"><span class="mono">06</span>Сутки</a></li>
+    <li><a href="#path"><span class="mono">08</span>Путь</a></li>
+    <li><a href="#archive"><span class="mono">09</span>Архив</a></li>
+    <li><a href="#faq"><span class="mono">11</span>Вопросы</a></li>
+    <li><a href="#contact"><span class="mono">12</span>Связь</a></li>
+  </ul>
+</nav>
+
+<div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-pin"><i></i><b class="cursor-label"></b></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js" defer></script>
+<script src="js/utils.js" defer></script>
+<script src="js/contours.js" defer></script>
+<script src="js/particles.js" defer></script>
+<script src="js/atlas.js" defer></script>
+<script src="js/archive.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
