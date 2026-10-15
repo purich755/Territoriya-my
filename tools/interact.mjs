@@ -21,7 +21,7 @@ const goTo = async (sel, dy = 0) => {
 fs.mkdirSync('raw/shots', { recursive: true });
 
 // 1. прелоадер (первый визит)
-await page.goto('http://localhost:8390/', { waitUntil: 'domcontentloaded' });
+await page.goto(process.env.URL || 'http://localhost:8390/', { waitUntil: 'domcontentloaded' });
 await sleep(500);
 const introOn = await page.evaluate(() => !!document.querySelector('#intro.is-running'));
 await page.screenshot({ path: `raw/shots/int-intro-${W}.png` });
